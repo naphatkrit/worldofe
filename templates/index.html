@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="title">
+  Bright eyes and pizza.
+</div>
+<div class="subtitle">
+  And lots of copying of design
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="sidebar-nav">
+  <div class="well">
+    <div class="accordion" id="accordion2">
+
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse"
+             data-parent="#accordion2" href="#collapseOne">
+            Collapsible Group Item #1
+          </a>
+        </div>
+        <div id="collapseOne" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <ul class="nav nav-list">
+              <li class="active"><a href="#">Dashboard</a></li>
+              <li><a href="#">Add Blog Post</a></li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Members</a></li>
+              <li><a href="#">Comments</a></li>
+              <li><a href="#">Gallery</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse"
+             data-parent="#accordion2" href="#collapseTwo">
+            Collapsible Group Item #2
+          </a>
+        </div>
+        <div id="collapseTwo" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <ul class="nav nav-list">
+              <li class="active"><a href="#">Dashboard</a></li>
+              <li><a href="#">Add Blog Post</a></li>
+              <li><a href="#">Calendar</a></li>
+              <li><a href="#">Members</a></li>
+              <li><a href="#">Comments</a></li>
+              <li><a href="#">Gallery</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  {{ data }}
+</div>
+
+{% endblock %}
+
+{% block footer %}
+Test footer text.
+{% endblock %}
+

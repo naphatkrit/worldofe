@@ -1,0 +1,157 @@
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,400italic);
+
+/* ----------------------------------------------------------------------
+   Page Layout
+   ---------------------------------------------------------------------- */
+
+html, body {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+body {
+  position: relative;
+  overflow-y: scroll;
+}
+
+.header {
+  height: 240px;
+  background-color: #08f;
+
+}
+
+.container {
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+}
+
+.content {
+  width: 960px;
+  margin: 0px auto;
+}
+
+.sidebar-nav {
+  float: left;
+  width: 240px;
+}
+
+.main {
+  float: left;
+  width: 700px;
+  margin-left: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+/* ----------------------------------------------------------------------
+   Header
+   ---------------------------------------------------------------------- */
+
+.header .content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  text-align: center;
+}
+
+.header .title {
+  font-size: 32px;
+  color: white;
+}
+
+.header .subtitle {
+  font-size: 15px;
+  color: white;
+  font-style: italic;
+}
+
+
+/* ----------------------------------------------------------------------
+   Sidebar
+   ---------------------------------------------------------------------- */
+
+.sidebar-nav .well {
+  border: 1px solid #ddd;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.sidebar-nav .well .accordion {
+  margin-bottom: -1px;
+}
+
+/* headings */
+
+.sidebar-nav .accordion-group .accordion-heading a {
+  display: block;
+  padding: 10px 15px;
+  margin-top: -1px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+}
+
+.sidebar-nav .accordion-group:first-child .accordion-heading a {
+  margin-top: 0;
+  border-top: none;
+}
+.sidebar-nav .accordion-group:last-child .accordion-heading a {
+
+}
+
+.sidebar-nav .accordion-heading:hover {
+  color: initial;
+  background-color: #eeeeee;
+}
+
+/* menu items */
+/*
+Learn: rgba(247, 182, 50, 0.1)
+Do: rgba(244, 155, 49, 0.1)
+Connect: rgba(242, 140, 49, 0.1)
+*/
+
+.sidebar-nav .accordion-inner {
+  background-color: white;
+}
+
+.sidebar-nav .accordion-inner li a {
+  background-color: white;
+  border-bottom: 1px solid #eee;
+}
+.sidebar-nav .accordion-inner li a:hover {
+  background-color: rgba(242, 140, 49, 0.1);
+  border-left: 6px solid rgba(242, 140, 49, 1);
+  -webkit-transition: border 0.05s ease-in;
+  -moz-transition: border 0.05s ease-in;
+  -o-transition: border 0.05s ease-in;
+}
+
+.sidebar-nav .accordion-inner li.active a,
+.sidebar-nav .accordion-inner li.active a:hover {
+  background-color: rgba(242, 140, 49, 0.1);
+  border-left: 6px solid rgba(242, 140, 49, 1);
+}
+
+.sidebar-nav .accordion-inner li:hover {
+
+}
+
+.sidebar-nav .accordion-inner li a:hover {
+
+}
+
+/* ----------------------------------------------------------------------
+   Selected Content
+   ---------------------------------------------------------------------- */
+
