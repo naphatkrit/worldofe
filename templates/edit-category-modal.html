@@ -1,0 +1,29 @@
+<a class="new-item">&middot;</a>
+<a href="#" class="new-item" data-toggle="modal" data-target="#editCategoryModal">
+  Edit Category
+</a>
+
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog"
+     aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+  <form action="/edit" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="editCategoryModalLabel">Edit Category</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="cat_id" value="{{ section.cat_id }}">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Category Name" value="{{ section.cat_name }}">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="edit" value="edit" class="btn btn-primary">Save Changes</button>
+          <button type="submit" name="delete" value="delete" class="btn btn-danger pull-left">Delete</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

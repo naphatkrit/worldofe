@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if section.description %}
+<div class="intro">
+  <h3>{{ section.name }}</h3>
+  {{ section.description|safe }}
+</div>
+{% endif %}
+
+<div class="main">
+  <ul class="breadcrumb">
+    {% if section.description %}
+    <li>
+      &nbsp;{{ section.items_count }} items
+    </li>
+    {% else %}
+    <li>
+      <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+    </li>
+    <li>{{ section.cat_name }}</li>
+    <li>{{ section.name }}</li>
+    {% endif %}
+    {% if user.is_active() %}
+    {% include 'add-item-modal.html' %}
+    {% include 'edit-section-modal.html' %}
+    {% include 'edit-category-modal.html' %}
+    {% endif %}
+  </ul>
+  {% for item in content %}
+  {% include 'content-item.html' %}
+  {% else %}
+  <div class="blank-label">
+    There's nothing here!
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

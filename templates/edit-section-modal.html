@@ -1,0 +1,33 @@
+<a class="new-item">&middot;</a>
+<a href="#" class="new-item" data-toggle="modal" data-target="#editSectionModal">
+  Edit Section
+</a>
+
+<div class="modal fade" id="editSectionModal" tabindex="-1" role="dialog"
+     aria-labelledby="editSectionModalLabel" aria-hidden="true">
+  <form action="" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="editSectionModalLabel">Edit Section</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id" value="{{ section.id }}">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Section Name" value="{{ section.name }}">
+          </div>
+          <div class="input-group">
+            <label for="description">Summary</label>
+            <textarea name="description" placeholder="Enter a short summary...">{{ section.description }}</textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="edit" value="edit" class="btn btn-primary">Save Changes</button>
+          <button type="submit" name="delete" value="delete" class="btn btn-danger pull-left">Delete</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

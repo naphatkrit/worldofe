@@ -1,0 +1,30 @@
+# Virtualenv/Common
+/bin/
+/build/
+/dist/
+/include/
+/lib/
+/local/
+/media/
+/site_media/
+/src/
+/*.egg-info/
+/pip-log.txt
+
+# Buildout
+/eggs/
+/develop-eggs/
+/.installed.cfg
+/*.egg
+
+# Misc
+/.idea/
+*.pyc
+*.swp
+.DS_Store
+.Python
+.matplotlib
+
+# Assets
+static/.webassets-cache
+.webassets-cache

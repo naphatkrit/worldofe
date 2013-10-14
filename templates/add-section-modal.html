@@ -1,0 +1,32 @@
+<a href="#" class="section new-section" data-toggle="modal" data-target="#{{ cat_slug }}DataModal">
+  Add section...
+</a>
+
+<div class="modal fade" id="{{ cat_slug }}DataModal" tabindex="-1" role="dialog"
+     aria-labelledby="{{ cat_slug }}DataModalLabel" aria-hidden="true">
+  <form action="/new" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="{{ cat_slug }}DataModalLabel">Add Section</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="type" value="section">
+          <input type="hidden" name="category" value="{{ cat_slug }}">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Section Name">
+          </div>
+          <div class="input-group">
+            <label for="description">Summary</label>
+            <textarea name="description" placeholder="Enter a short summary..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

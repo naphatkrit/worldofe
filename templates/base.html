@@ -2,36 +2,71 @@
 <html>
   <head>
     <title>Princeton Entrepreneurship</title>
-    {% assets output="packed/assets.js", "js/jquery.js", "js/jquery.filedrop.js", "js/bootstrap.js",  "js/d3.js", "js/d3.fisheye.js", "js/nv.d3.js" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
-    {% assets output="packed/assets.css", "css/bootstrap.css", "css/nv.d3.css", "css/style.css" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}"/>
-    {% endassets %}
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.filedrop.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
     <link rel="icon" type="image/png" href="/static/img/favicon.png" />
   </head>
   <body>
+    <div class="wrapper">
 
-    <div class="header">
-      <div class="content">
-        {% block header %}
-        {% endblock %}
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li><br/>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+      <div class="header">
+        <div class="content">
+          {% block header %}
+          <div class="title">
+            <a href="/">{{ title|safe }}</a>
+          </div>
+          <div class="subtitle">{{ tagline|safe }}</div>
+          {% endblock %}
+        </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="content">
-        {% block content %}
-        {% endblock %}
+      <div class="container">
+        <div class="content">
+          {% block sidebar %}
+          {% include 'sidebar.html' %}
+          {% endblock %}
+          {% block content %}
+          {% endblock %}
+        </div>
       </div>
-    </div>
 
-    <div class="footer">
-      <div class="content">
-        &copy; 2013 Princeton Social Entrepreneurship Initiative +
-        Princeton Entrepreneurship Club
+      <div class="footer">
+        <div class="content">
+          &copy; 2013 {{ authors }}
+          &middot;
+          &nbsp;&#8747;
+          &middot;
+          {% if user.is_active() %}
+          <a href="#" data-toggle="modal" data-target="#logoutModal">
+            Logout
+          </a>
+          {% else %}
+          <a href="#" data-toggle="modal" data-target="#loginModal">
+            Administrator Login
+          </a>
+          {% endif %}
+        </div>
       </div>
-    </div>
+      {% if user.is_active() %}
+      {% include 'logout-modal.html' %}
+      {% else %}
+      {% include 'login-modal.html' %}
+      {% endif %}
 
+    </div>
+    <script src="/static/js/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,28 @@
+<a href="#" class="accordion-toggle" data-toggle="modal" data-target="#categoryModal">
+  Add category...
+  <span class="glyphicon glyphicon-plus"></span>
+</a>
+
+<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog"
+     aria-labelledby="categoryModalLabel" aria-hidden="true">
+  <form action="/new" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="categoryModalLabel">Add Category</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="type" value="category">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Category Name">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

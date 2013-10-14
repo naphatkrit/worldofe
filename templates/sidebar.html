@@ -1,0 +1,67 @@
+<div class="sidebar-nav">
+  <div class="well">
+    <div class="accordion" id="accordion1">
+      <div class="accordion-group">
+        <div class="accordion-heading {% if not category_slug %}active{% endif %}">
+          <a class="accordion-toggle" href="/">
+            Latest News <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          {% if user.is_active() %}
+          {% include 'add-feed-modal.html' %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="well">
+    <div class="accordion" id="accordion2">
+      {% for cat_id, cat_slug, sections in categories %}
+      <div class="accordion-group">
+        <div class="accordion-heading {% if cat_slug==category_slug %}active{% endif %}">
+          <a class="accordion-toggle" data-toggle="collapse"
+             data-parent="#accordion{{loop.index}}" href="#collapse{{loop.index}}">
+            {{ sections[0].cat_name }}
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+        <div id="collapse{{loop.index}}" class="accordion-body collapse {% if cat_slug==category_slug or (not category_slug and loop.index==1) %}in{% endif %}">
+          <div class="accordion-inner">
+            <ul class="nav nav-list">
+              {% for section in sections %}
+              {% if section.name %}
+              <li {% if cat_slug==category_slug and section.slug==section_slug %}class="active"{% endif %}>
+                <a href="/{{cat_slug}}/{{section.slug}}" class="section">
+                  {{ section.name }}<br/>
+                  {% if showcounts %}
+                  <span class="muted">{{ section.items_count }} Items</span>
+                  {% endif %}
+                </a>
+              </li>
+              {% endif %}
+              {% endfor %}
+              {% if user.is_active() %}
+              <li>
+                {% include 'add-section-modal.html' %}
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% if user.is_active() %}
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          {% include 'add-category-modal.html' %}
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>

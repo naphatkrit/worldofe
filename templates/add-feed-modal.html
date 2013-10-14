@@ -1,0 +1,35 @@
+<a href="#" class="accordion-toggle" data-toggle="modal" data-target="#feedModal">
+  Submit News...
+  <span class="glyphicon glyphicon-plus"></span>
+</a>
+
+<div class="modal fade" id="feedModal" tabindex="-1" role="dialog"
+     aria-labelledby="feedModalLabel" aria-hidden="true">
+  <form action="/feed" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="feedModalLabel">Submit News</h4>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Title">
+          </div>
+          <div class="input-group">
+            <label for="link">Link</label>
+            <input type="text" name="link" placeholder="http://">
+          </div>
+          <div class="input-group">
+            <label for="text">Summary</label>
+            <textarea name="text" placeholder="Enter a short summary..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit Link</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

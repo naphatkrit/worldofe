@@ -1,0 +1,32 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+     aria-labelledby="loginModalLabel" aria-hidden="true">
+  <form action="/login" method="post">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="loginModalLabel">Spire + {{ title }}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <label for="username">
+              <span class="glyphicon glyphicon-user"></span>
+            </label>
+            <input type="text" name="username" placeholder="Username">
+          </div>
+          <div class="input-group">
+            <label for="password">
+              <span class="glyphicon glyphicon-lock"></span>
+            </label>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary pull-right">Login</button>
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="btn pull-right">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
