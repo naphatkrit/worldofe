@@ -102,11 +102,14 @@ def json_data():
         for sec in ordered(list(grp)):
             sec_id = sec.get('id')
             cur.execute(
-                '''SELECT title AS name, link AS url, text AS details, id, prev_id, next_id
-                   FROM data_items WHERE section=%s''', (sec_id,))
+                '''SELECT title AS name, link AS url, text AS details,
+                   id, prev_id, next_id, meta FROM data_items WHERE section=%s''',
+                (sec_id,))
+            data_items = cur.fetchall()
             sections[cat].append({
                     'name': sec.get('name'),
-                    'content': cur.fetchall()
+                    'content': [(dict(i.items() + json.loads(i.get('meta')).items())) if i.get('meta') else i
+                                for i in data_items]
                     })
 
     categories = [{'sections': sections[cat['cat_slug']],
