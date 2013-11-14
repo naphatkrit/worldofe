@@ -1,6 +1,6 @@
 DELETE FROM metadata;
-INSERT INTO metadata VALUES ('title', 'The Princeton Entrepreneurship Club');
-INSERT INTO metadata VALUES ('tagline', 'Helping students <b>build and grow</b> from <b>ideas to startups</b>');
+INSERT INTO metadata VALUES ('title', 'World of E');
+INSERT INTO metadata VALUES ('tagline', 'Entrepreneurship @ Princeton');
 INSERT INTO metadata VALUES ('authors', 'Princeton Social Entrepreneurship Initiative');
 INSERT INTO metadata VALUES ('username', 'princetonsei');
 INSERT INTO metadata VALUES ('password', '#Ps12Ei34');

@@ -1,6 +1,6 @@
 import psycopg2, psycopg2.extras, urlparse, os, sys, json, jinja2, time, datetime, itertools, re
 from urlnorm import urlnorm
-from flask import Flask, url_for, request, redirect, render_template, g, abort, flash
+from flask import Flask, url_for, request, redirect, render_template, g, abort, flash, jsonify
 from flask.ext.login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
 from werkzeug import secure_filename
 from htmlmin.minify import html_minify
@@ -75,6 +75,46 @@ def inject_globals():
     data['categories'] = categories
     data['user'] = current_user
     return data
+
+@app.route('/data')
+def json_data():
+    ''' provide app data in JSON format '''
+
+    # fetch hierarchy of sections and categories
+    cur = g.db.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute('''
+        SELECT categories.name AS cat_name, categories.slug AS cat_slug,
+        sections.id, sections.next_id, sections.prev_id,
+        sections.category, sections.slug, sections.name
+        FROM sections RIGHT JOIN categories ON sections.category=categories.id''')
+    sections_data = cur.fetchall()
+    cur.execute('''
+        SELECT categories.name AS cat_name, categories.slug AS cat_slug,
+        id, next_id, prev_id FROM categories''')
+    categories_data = cur.fetchall()
+
+    # group sections by category
+    group_by_key = lambda a: a['cat_slug']
+    sections_data.sort(key=group_by_key)
+    sections = {}
+    for cat, grp in itertools.groupby(sections_data, group_by_key):
+        sections[cat] = []
+        for sec in ordered(list(grp)):
+            sec_id = sec.get('id')
+            cur.execute(
+                '''SELECT title AS name, link AS url, text AS details, id, prev_id, next_id
+                   FROM data_items WHERE section=%s''', (sec_id,))
+            sections[cat].append({
+                    'name': sec.get('name'),
+                    'content': cur.fetchall()
+                    })
+
+    categories = [{'sections': sections[cat['cat_slug']],
+                   'name': cat['cat_name']}
+                  for cat in ordered(categories_data)]
+
+
+    return json.dumps(categories)
 
 def delete_from_linkedlist(table, item_id):
     ''' remove a given node by id within a linked-list table '''
